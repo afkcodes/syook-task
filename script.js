@@ -2,25 +2,22 @@
 const taskTitleInput = document.querySelector("#task_title_input");
 const taskDescInput = document.querySelector("#task_desc_input");
 const taskCreateBtn = document.querySelector("#task_create_btn");
-const taskList = document.querySelector("#task_list");
+let taskList = document.querySelector("#task_list");
+const taskSearchInput = document.querySelector("#search_task_input");
 
 // listeners
 taskCreateBtn.addEventListener("click", function (event) {
   createOrUpdateTask(event, "create");
 });
+
+taskSearchInput.addEventListener("input", searchTask);
 const tasks = [];
 
-function createUid() {
-  return (
-    Math.random().toString(36).substring(2) + new Date().getTime().toString(36)
-  );
-}
-
-function render() {
+function render(taskArr) {
   taskList.innerHTML = "";
-  tasks.forEach((task) => {
-    addTask(task);
-  });
+  for (let i = 0; i < taskArr.length; i++) {
+    addTask(taskArr[i]);
+  }
 }
 
 function createOrUpdateTask(event, type, taskTitle) {
@@ -29,21 +26,20 @@ function createOrUpdateTask(event, type, taskTitle) {
   const desc = taskDescInput.value;
   if (type === "create") {
     if (title === "" || desc === "") {
-      console.log("title or desc empty returning");
+      alert("Title or Description Empty.");
       return;
     } else {
       const found = tasks.some((el) => el.title === title);
       if (!found) {
         const task = {
-          uid:createUid(),
           title,
           desc,
         };
         tasks.push(task);
-        render();
+        render(tasks);
       } else {
         console.log("-------->", tasks);
-        alert('Duplicate Task');
+        alert("Duplicate Task.");
       }
     }
   } else {
@@ -60,7 +56,6 @@ function createOrUpdateTask(event, type, taskTitle) {
 function addTask(task) {
   const taskDiv = document.createElement("div");
   taskDiv.classList.add("task");
-  console.log("calling aDDtask");
 
   const taskTitle = document.createElement("li");
   taskTitle.innerText = task.title;
@@ -107,7 +102,9 @@ function deleteTask(e) {
       task.remove();
       tasks.splice(
         tasks.findIndex(function (delted_task) {
-          return delted_task.title === task.querySelector(".task_title").innerText;
+          return (
+            delted_task.title === task.querySelector(".task_title").innerText
+          );
         }),
         1
       );
@@ -128,4 +125,11 @@ function editTask(e) {
       task.querySelector(".task_title").innerText
     );
   }
+}
+
+function searchTask(e) {
+  const searchedTasks = tasks.filter((task) =>
+    task.title.toLowerCase().includes(e.target.value.toLowerCase())
+  );
+  render(searchedTasks);
 }
