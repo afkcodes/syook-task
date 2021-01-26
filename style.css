@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #312c51;
+  height: 100vh;
+  width: 100%;
+  font-family: "Nunito", sans-serif;
+  color: white;
+}
+
+header {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  flex-direction: column;
+  row-gap: 25px;
+}
+
+form input,
+form button,
+form textarea {
+  padding: 0.5rem;
+  border: none;
+  font-size: 1rem;
+  background: white;
+  width: 60%;
+  font-family: "Nunito", sans-serif;
+}
+
+form button {
+  color: #3b5360;
+  background: #f0c38e;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 20%;
+}
+form button:hover {
+  color: #f0c38e;
+  background: #3b5360;
+}
+
+form input::placeholder {
+  font-family: "Nunito", sans-serif;
+}
+
+form textarea::placeholder {
+  font-family: "Nunito", sans-serif;
+}
+
+.task_container{
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: '100%';
+}
+
+#task_list {
+  min-width: 60%;
+  list-style: none;
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#task_list::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+#task_list::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+#task_list::-webkit-scrollbar-thumb
+{
+	background-color: #4d375d;
+	border: 2px solid #F5F5F5;
+}
+
+
+.task {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  background: #222831;
+  color: white;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  transition: all 0.5s ease;
+}
+
+.task_title{
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.task_desc{
+  flex-wrap: wrap;
+}
+
+.task_action_btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn_action {
+  height: 2rem;
+  width: 2rem;
+  background-color: #222831;
+  border: none;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  margin-inline: 0.8rem;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn_action:hover{
+  background-color: white;
+  color: #222831;
+}
+.fa-trash-alt, .fa-edit{
+  pointer-events: none;
+}
+.deleted{
+  transform: translatex(8rem);
+  opacity: 0;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Syook Task Tracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>
+            Syook Task Tracker
+        </h1>
+    </header>
+    <form action="">
+        <input type="text" name="taskTitle" id="task_title_input" placeholder="Task Name">
+        <textarea name="taskDescription" id="task_desc_input" cols="30" rows="10" placeholder="Task Description"></textarea>
+        <button type="submit" id="task_create_btn">
+            Create
+        </button>
+    </form>
+
+    <div class="task_container">
+        <ul id="task_list"></ul>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html> 
