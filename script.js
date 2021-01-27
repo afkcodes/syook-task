@@ -29,7 +29,7 @@ function createOrUpdateTask(event, type, taskTitle) {
       alert("Title or Description Empty.");
       return;
     } else {
-      const found = tasks.some((el) => el.title === title);
+      const found = tasks.some((el) => el.title.toLowerCase() === title.toLowerCase());
       if (!found) {
         const task = {
           title,
